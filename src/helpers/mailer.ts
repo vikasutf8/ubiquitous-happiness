@@ -43,7 +43,7 @@ export const sendMail = async (email: string, emailtype: string, userId: string)
             from: 'vikas@gmail.com', 
             to: email, 
             subject: emailtype === "VERIFY" ? "Verify your email" : "Reset your password", 
-            html: "<b>Hello world Creating proper pages for verification?</b>", 
+            html: emailtype === "VERIFY" ? `<a href="http://localhost:3000/verify/${hashedToken}">Click here to verify your email</a>` : `<a href="http://localhost:3000/reset/${hashedToken}">Click here to reset your password</a>`, 
           }
 
 
