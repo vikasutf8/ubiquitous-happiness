@@ -13,10 +13,12 @@ export const sendMail = async (email: string, emailtype: string, userId: string)
             //send verification mail
             await User.findByIdAndUpdate(
               userId,
-              {
+
+              //debugging 
+              {$set: {
                   verifyToken : hashedToken,
                   verifyTokenExpiry : Date.now() + 3600000
-              }
+              }}
              )
         }
         else if(emailtype === "RESET"){
